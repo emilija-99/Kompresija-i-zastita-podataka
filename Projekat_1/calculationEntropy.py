@@ -4,7 +4,7 @@ import math
 lenght = 0;
 container = {}
 
-file_path = os.path.join("C:\\Users\\EliteBook 830 G6\\Desktop\\FAX\\Kompresija i zastita podataka", "file.txt")
+file_path = os.path.join("./file.txt")
 with open(file_path, 'r') as file:
     while True:
         content = file.read(1)

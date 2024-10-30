@@ -1,1 +1,1 @@
-# Kompresija-i-zastita-podataka
+# Kompresija i zastita podataka

@@ -52,7 +52,7 @@ def encode_content(file_path, symbols):
     return encoded_content
 def main():
     global length
-    file_path = os.path.join("C:\\Users\\EliteBook 830 G6\\Desktop\\Kompresija-i-zastita-podataka\\Projekat_1", "file_proba.txt")
+    file_path = os.path.join("./file_proba.txt")
     with open(file_path, 'r') as file:
         while True:
             content = file.read(1)
@@ -71,7 +71,7 @@ def main():
 
     encoded_content = encode_content(file_path, symbols)
 
-    encoded_file_path = os.path.join("C:\\Users\\EliteBook 830 G6\\Desktop\\Kompresija-i-zastita-podataka\\Projekat_1", "encoded_file.txt")
+    encoded_file_path = os.path.join("./encoded_file.txt")
     with open(encoded_file_path, "w") as encoded_file:
         encoded_file.write(encoded_content)
 if __name__ == "__main__":
