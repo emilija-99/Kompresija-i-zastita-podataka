@@ -1,2 +1,0 @@
-New-RandomFile -Path "C:\Users\Emilija\Documents\New folder\_projakat_1\output\testbinfile1.bin" -Size (1MB) -BlockSize (512KB) # pokretanje bin-fajl
-New-TextFile -Path "C:\Users\Emilija\Documents\New folder\_projakat_1\output\random-ascii.bin" -Size (160) -Kind random-ascii # pokretanje text-fajl
