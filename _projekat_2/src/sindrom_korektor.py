@@ -1,6 +1,6 @@
 import sys
 from itertools import combinations
-sys.path.insert(1, 'C:\\Users\\Emilija\\Documents\\Kompresija-i-zastita-podataka\\_projekat_2\\src')
+sys.path.insert(1, 'Kompresija-i-zastita-podataka\\_projekat_2\\src')
 import H_matrica as H
 
 H = H.H
