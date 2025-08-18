@@ -1,5 +1,7 @@
 import os 
 import heapq
+from pathlib import Path
+
 # racunaj verovatnoce
 def frekvencije(podaci):
     frekvencije = {}
@@ -9,9 +11,9 @@ def frekvencije(podaci):
         else:
             frekvencije[karakter] = 1
     
-    print("Frekvencije pojavljivanja karaktera: ")
-    for karakter, frekvencija in frekvencije.items():
-        print(f"  {chr(karakter)}: {frekvencija}")
+    # print("Frekvencije pojavljivanja karaktera: ")
+    # for karakter, frekvencija in frekvencije.items():
+    #     print(f"  {chr(karakter)}: {frekvencija}")
 
     return frekvencije
 
@@ -47,6 +49,7 @@ def huffmanovoStablo(podaci)->Node:
         return roditelj
 
     # vise simbola, kreiraj stablo
+    # spajaju se dva minimuma verovatnoca i prave novi cvor
     while len(heap)>1:
         min1 = heapq.heappop(heap)
         min2 = heapq.heappop(heap)
@@ -68,8 +71,8 @@ def generisiKodove(root:Node):
             kodovi[node.slovo]=kod if kod !="" else "0"
             return
         
-        pom(node.levo, kod + "0")
-        pom(node.desno, kod + "1")
+        pom(node.levo, kod + "0") # leva grana u konstukciji
+        pom(node.desno, kod + "1") # desna grana u konstrukciji
     pom(root, "")
     return kodovi
 
@@ -92,10 +95,14 @@ def enkodirajHuffmana(text, kodovi):
     return ''.join(kodovi[(karakter)] for karakter in text)
 
 def upisiFajl(out_path, podaci):
-    with open(out_path, 'a', encoding='utf-8') as f:
-        f.write(podaci)
+    fajl = Path(out_path)
+    if(fajl.exists()):
+        print("Fajl je napravljen!")
+    else:
+        with open(out_path, 'a', encoding='utf-8') as f:
+            f.write(podaci)
 
-input_path = f"_projekat_1\\output\\random-ascii.bin"
+input_path = f"_projekat_1\\output\\random-asciI.bin"
 dekodiraj_path = f"_projekat_1\\output\\huffmanov-code\\huffman-code-dekodirani.txt"
 enkodiraj_path = f"_projekat_1\\output\\huffmanov-code\\huffman-code-enkodirani.txt"
 
@@ -110,10 +117,10 @@ Lh = 0
 for karakter, frekvencija in frekvencije.items():
     for slovo, kod in kodovi.items():
         if karakter == slovo:
-            print(f"Karakter: {chr(karakter)}, Frekvencija: {frekvencija}, Kod: {kod}")
-            Lh += frekvencija * len(kod)
+            print(f"Karakter: {chr(karakter)}, Frekvencija: {frekvencija/len(podaci)}, Kod: {kod}")
+            Lh += (frekvencija/len(podaci)) * len(kod)
 
-print(f"Prosečna dužina Huffman kodova (Lh): {Lh / len(podaci)}")
+print(f"Prosečna dužina Huffman kodova (Lh): {Lh} bita po simbolu")
 
 print("Huffman kodovi:")
 ch_kodovi = ""
@@ -124,10 +131,19 @@ for slovo, kod in kodovi.items():
 upisiFajl(enkodiraj_path,ch_kodovi)
 
 enkodirani = enkodirajHuffmana(podaci, kodovi)
-print(f"Enkodirani podaci: {enkodirani}")
+# print(f"Enkodirani podaci: {enkodirani}")
 
 dekodirani = dekodirajHuffmana(enkodirani, root)
-print(f"Dekodirani podaci: {dekodirani}")
+# print(f"Dekodirani podaci: {dekodirani}")
 
 upisiFajl(enkodiraj_path, enkodirani)
 upisiFajl(dekodiraj_path, dekodirani)
+
+print("Ulazni podaci: ", len(podaci))
+print("Dekodirani podaci: ", len(dekodirani))
+
+with open(input_path, "rb") as f1, open(dekodiraj_path, "rb") as f2:
+    fajl1 = f1.read()
+    fajl2 = f2.read()
+if(fajl1 == fajl2):
+    print("Fajlovi su identični. Dekodiranje je uspešno.")

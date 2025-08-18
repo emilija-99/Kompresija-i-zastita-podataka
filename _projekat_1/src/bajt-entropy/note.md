@@ -1,17 +1,27 @@
 ### Bajt Entropija
 
-Definicija izračunavanja Entorpije: 
+#### Definicija izračunavanja Entorpije:
 `H(x) = EI(X) = sum(p(x)I(x)) = -sim(p(x)log_2p(x))`
 
-H(x) rezultat koji dobijamo ovim izračunavanjem je **srednja količina informacija** koju X nosi.
+`H(X)` rezultat izračunacanje entropije predstavlja **srednju količinu informacija** koju nosi X (izvorni fajl 'random-ascii.bin').
 
-Prema ulazim podacima sačuvanim u fajlu random-ascii.bin, izracunavanjem entorpije dobili smo vrednost koja je ~5.14 sto nam da srednja količina informacija koju naši podaci nose se približno kodira sa 5 bitova.
+#### Objasšnjenje postupka izračunavanja:
+Prema ulazim podacima sačuvanim u fajlu random-ascii.bin generisanih na osnovu izvornog alfabeta A* koji sadr, izračunavanjem entorpije dobili smo vrednost koja je ~5.95 koja predstavlja prosećan broj bitova potrebnih za predstavljanje kodnih simbola prilikom kodiranja kodnih reči.
 
-Kodiranje simbola u zavisnosti od njihove verovatnoce:
-- simboli sa manjom verovatnoćom - veća gustina pojavljivanja - manji broj
-bitova za kodiranje (informacija koju dati simbol nosi u sebi je manja)
-- simboli sa većom verovatnoćom - manja gustina pojavljivanja - veći broj bitova
-potrebnih za kodiranje (informacija koju dati simbol nosi u sebi je veća)
+Prilikom računa entropije potrebno je da se svaki ulazni simbol predstavi svojom verovatnoćom. 
+Verovatnoća ozačava kolika je neizvesnot pojavljivanja tog simbola u ulaznom fajlu. 
 
-Kako koristimo ascii - 256 simola, gde je log_256 = 8bita
-Dobijeni rezulat od 5.16 oznacava da su podaci nasumicni, ali ne potpuno uniformni.
+Za svaki simbol xi imamo verovatnoću p(xi) datu kao broj pojavljivanja datog simbola / ukupan broj simbola.
+
+Rezulatat izračunavanja verovatnoće simbola xi:
+- simbol čija je vrednost verovatnoće manja, označava da je zastupljenost u našim ulaznim podacima redje
+- simbol čija je vrednost verovatnoće je velika označava da je zastupljenost u našim podacima često
+
+Alfabet koji smo koristili za kodiranje: `8qEkCTNVUpueDiWb6j5G0QxYmnLOFc17J3MwXHIAhgltszRr2v9dZKPSofB4ay`
+b = 62
+
+Granične vrednosti za srednju dužinu kodne reči u oznaci nv:
+n*= inf nv
+
+H(X) <= nv <= H(X) + 1
+5.95 < n <= 6.95

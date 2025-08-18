@@ -1,4 +1,7 @@
 ##### LZ77
+
+*!Prva implementacija LZ77 bila je pogodna sa malom količinom podataka. Nakon izmene veličine fajla koji se kodira, vreme za kodiranje i
+dekodiranje je postalo različito od optimalnog.*
 Algoritam kompresije bez gubitaka koji mapira podatke zamenjujući
 duplikatne delove podataka metapodacima (offset, length, ch)
 
@@ -43,7 +46,6 @@ sliding_window
 [1,5,''] 5 karaktera sa pozicije 1
 
 abcbbcbaaaaa
-
 
 
 source: https://dev.to/vincent_corbee/lz77-compression-in-javascript-4nec
