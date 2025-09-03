@@ -5,9 +5,9 @@ n-k = 9
 wr = 5
 wc = 3
 
-LDPC kodovi su linerni kodovi sa retkomkontolnom matricom H.
+LDPC kodovi su linerni kodovi sa kontolnom matricom H.
 Regularni LDCP kodovi zadovoljavaju svojstvo da svaki red, odnosno kolona matrice H sadrzi wr, odnosno wc jedinica.
-Matrica je retka ako vazi we << m i wc << n
+Matrica je retka ako vazi wr << m i wc << n
 
 Algoritam:
 Prvih (n-k)/wc redova dobijaju se tako sto se napre upise we jedinica

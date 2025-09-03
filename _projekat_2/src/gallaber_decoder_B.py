@@ -16,9 +16,10 @@ H = H.H
 def sindrom(H, e):
     m, n = len(H), len(H[0])
     sindrom = [0]*m
-    H_transponovano =  [[H[j][i] for j in range(m)] for i in range(n)]
-    sindrom = [sum(e[i] * H_transponovano[j][i] for i in range(m)) % 2 for j in range(n)]
-    return tuple(sindrom)
+    return tuple(
+        sum((H[r][c] & e[c]) for c in range(n)) % 2
+        for r in range(m)
+    )
 
 def generisiSveKombinacijeZaKorektor(tezina, n):
     kombinacije = []

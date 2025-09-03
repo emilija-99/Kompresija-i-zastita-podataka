@@ -1,4 +1,4 @@
-##### Shannon-Fano
+## Shannon-Fano
 Postupak konstukcije prefiksnog koda. Shannon fano nam pokazujemo
 mogućnost definisanja prefiksnog koda, ali ne garantuje nam da je taj kod
 optimalan kod.

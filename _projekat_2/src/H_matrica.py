@@ -1,8 +1,8 @@
 import random 
-n = 15
-nk = 9
-wr = 5
-wc = 3
+n = 15 # broj kolona
+nk = 9 # broj redova
+wr = 5 # svaki red ima tacno 5 jedinica  (I grupa)
+wc = 3 #
 
 grupe_redova = nk // wc
 
@@ -12,6 +12,10 @@ H = [[0]*n for _ in range(nk)]
 for i in range(grupe_redova):
     for c in range(i*wr, (i+1)*wr):
         H[i][c] = 1
+
+# pomocu permutacija kolona iz I grupe
+# i fiksiranog seed-a pravimo kombinadicuje
+# tako da svaka kolona ima ukupno 3 jedinice
 
 def permutacije_grupa(seed, redovi, offset):
     kolone = list(range(n))
