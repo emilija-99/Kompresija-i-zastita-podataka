@@ -2,14 +2,14 @@ import json
 
 def lzwKodiranje(podaci):
     tabela_kodova = {chr(i): i for i in range(256)}
-    print("Tabela kodova:", tabela_kodova)
+    # print("Tabela kodova:", tabela_kodova)
 
     podatak = ""
     rezultat = []
 
     for znak in podaci:
         podatakSimbol = podatak + znak
-        print("Trenutni podatak:", podatak, "Simbol:", znak, "Podatak+Simbol:", podatakSimbol)
+        # print("Trenutni podatak:", podatak, "Simbol:", znak, "Podatak+Simbol:", podatakSimbol)
         if podatakSimbol in tabela_kodova:
                 podatak = podatakSimbol
         else:
